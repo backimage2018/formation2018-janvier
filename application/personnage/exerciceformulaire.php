@@ -1,5 +1,6 @@
 <?php
 require 'autoload.php';
+// comment
 $config = parse_ini_file('jeu.ini');
 $host = $config['host'];
 $db = $config['dbname'];
