@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+    	/** get all file **/
+        //$("#div1").load("ajax.txt");
+    	/** get specific part of file **/
+        //$("#div1").load("ajax.txt #p1");
+    	/** get file with callback function **/
+/*        $("#div1").load("ajax.txt", function(responseTxt, statusTxt, xhr){
+            if(statusTxt == "success")
+                alert("External content loaded successfully!");
+            if(statusTxt == "error")
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+        });*/
+        $("#div1").load("ajaxwaiting.php", function(responseTxt, statusTxt, xhr){
+            if(statusTxt == "success")
+                alert("External content loaded successfully!");
+            if(statusTxt == "error")
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>
