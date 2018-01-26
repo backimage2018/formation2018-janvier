@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h1>The XMLHttpRequest Object</h1>
+
+	<h3>Wait 3 second</h3>
+	<div id="show"></div>
+
+
+
+	<script>
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("show").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "ajaxwaiting.php", true);
+		xhttp.send();
+
+		/*function callAjax() {
+		 var xhttp;
+		 xhttp = new XMLHttpRequest();
+		 xhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+		 document.getElementById("show").innerHTML = this.responseText;
+		 }
+		 };
+		 xhttp.open("GET", "ajaxwaiting.php", true);
+		 xhttp.send();   
+		 }
+		 callAjax();*/
+	</script>
+
+</body>
+</html>
