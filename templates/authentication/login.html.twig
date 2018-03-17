@@ -1,0 +1,48 @@
+{% extends "eshop.html.twig" %}
+
+		{% block sections %}
+	
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<form action="{{ path('login') }}" method="post" class="clearfix">
+					<div class="col-md-6">
+						<div class="billing-details">
+							<p>Not yet a customer ? <a href="/signin">Signin</a></p>
+						<div class="section-title">
+							<h3 class="title">Login</h3>
+						</div>
+							<div class="form-group">
+                                {% if error %}
+                                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+							</div>
+							<div class="form-group">
+							    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="User name or e-mail" class="input"/>
+							</div>
+							<div class="form-group">
+							    <input type="password" id="password" name="_password" placeholder="Password" class="input"/>
+							</div>
+						<button type="submit" class="primary-btn">Login!</button>
+
+						</div>
+					</div>
+
+					<div class="col-md-6">
+					</div>
+				</form>
+			</div>
+
+
+
+	<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% endblock %}

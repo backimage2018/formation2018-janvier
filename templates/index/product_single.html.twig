@@ -1,0 +1,51 @@
+
+				<!-- Product Single -->
+
+				
+					<div class="product product-single">
+						<div class="product-thumb">
+							{% if (product.new is defined and product.new is not null) or (product.sale is defined and product.sale is not null) %}
+							<div class="product-label">
+								{% if product.new is defined and product.new is not null %}<span>{{ product.new }}</span>{% endif %}
+								{% if product.sale is defined and product.sale is not null %}<span class="sale">{{ product.sale }}</span>{% endif %}
+							</div>
+							{%endif%}
+								{% if product.h is defined %}
+									<ul class="product-countdown">
+										<li><span>{{ product.h }} H</span></li>
+										<li><span>{{ product.m }} M</span></li>
+										<li><span>{{ product.s }} S</span></li>
+									</ul>
+								{% endif %}
+							<button class="main-btn quick-view" ><i class="fa fa-search-plus"></i> Quick view</button>
+							<a class="main-btn quick-view" href="{{path('product',{'id':product.id})}}"><i class="fa fa-search-plus"></i> Quick view</a>
+							{% if product.image is defined and product.image is not null %}
+								<img src="{{ asset('img/'~ product.image.src ~'') }}" alt="">
+							{% else %}
+								<img src="{{ asset('img/defaul-avatar_0.jpg') }}" alt="">
+							{% endif %}
+							
+						</div>
+						<div class="product-body">
+							<h3 class="product-price">{{ product.price }}{% if product.oldprice is defined %}<del class="product-old-price">{{ product.oldprice }}</del>{% endif %}</h3>
+							<div class="product-rating">
+								
+									{% for  i in 0..4 %}
+										{% if product.notation is not defined or loop.index0 < product.notation%}
+											<i class="fa fa-star"></i>
+										{% else %}
+											<i class="fa fa-star-o empty"></i>
+										{% endif %}
+									{% endfor %}
+								
+							</div>
+							<h2 class="product-name"><a href="#">{{ product.name }}</a></h2>
+							<div class="product-btns">
+								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+							</div>
+						</div>
+						</div>
+
+				<!-- Product Single -->

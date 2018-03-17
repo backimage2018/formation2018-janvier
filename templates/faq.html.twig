@@ -1,0 +1,25 @@
+{% extends "eshop.html.twig" %}
+
+		{% block sections %}
+	
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			{% if faqs is defined %}
+			{% for faq in faqs %}
+			<!-- row -->
+			<div class="row">
+				<h3>{{ faq.q }}</h3>
+				<p>{{ faq.a }}</p>
+			</div>
+			<!-- /row -->
+			{% endfor %}
+			{% endif %}
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% endblock %}

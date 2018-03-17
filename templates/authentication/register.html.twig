@@ -1,0 +1,52 @@
+{% extends "eshop.html.twig" %}
+	
+	{% block sections %}
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				{{ form_start(form, { 'attr':{'class':'clearfix'}}) }}
+					<div class="col-md-6">
+						<div class="billing-details">
+							<p>Already a customer ? <a href="/login">Login</a></p>
+						<div class="section-title">
+							<h3 class="title">Signin</h3>
+						</div>
+							<div class="form-group">
+							{% if not form.vars.valid %}
+							{% for child in form.children %}
+								{% for error in child.vars.errors %}
+								<p>{{ error.message }}</p>
+								{% endfor %}
+							{% endfor %}
+							{% endif %}
+							</div>
+							<div class="form-group">
+								{{ form_widget(form.username, { 'attr':{ 'class':'input', 'placeholder':'User name'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_widget(form.email, { 'attr':{ 'class':'input', 'placeholder':'Email'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_widget(form.plainPassword.first, { 'attr':{ 'class':'input', 'placeholder':'Password'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_widget(form.plainPassword.second, { 'attr':{ 'class':'input', 'placeholder':'Repeat password'}}) }}
+							</div>
+						<button type="submit" class="primary-btn">Register!</button>
+
+						</div>
+					</div>
+
+					<div class="col-md-6">
+					</div>
+				{{ form_end(form) }}
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+	{% endblock %}

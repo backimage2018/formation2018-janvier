@@ -1,0 +1,26 @@
+
+<!-- row -->
+<div class="row">
+	<!-- section title -->
+	<div class="col-md-12">
+		<div class="section-title">
+			<h2 class="title">Picked For You</h2>
+		</div>
+	</div>
+	<!-- section title -->
+	<!-- Product Single -->
+
+	{% if pickedarticles %}
+	{% for product in
+        				pickedarticles %}
+	<div class="col-md-3 col-sm-6 col-xs-6">
+		{% include './index/product_single.html.twig' with
+        				product %}
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	<!-- /Product Single -->
+
+</div>
+<!-- /row -->

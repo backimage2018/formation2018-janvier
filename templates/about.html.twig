@@ -1,0 +1,19 @@
+{% extends "eshop.html.twig" %}
+
+		{% block sections %}
+	
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			{% if about is defined %}
+				<h3>{{ about.title }}</h3>
+				<p>{{ about.message }}</p>
+			{% endif %}
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% endblock %}

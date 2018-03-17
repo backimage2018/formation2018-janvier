@@ -1,0 +1,74 @@
+
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        chain_provider:
+            chain:
+                providers: [user_provider]
+        user_provider:
+            entity:
+                class: App\Entity\User
+        in_memory:
+            memory:
+                users:
+                    fab:
+                        password: fabpass
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: adminpass
+                        roles: 'ROLE_ADMIN'
+                    
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        App\Entity\User:
+            algorithm: bcrypt
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|fonts|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            http_basic: ~
+            form_login:
+                login_path: /login
+                check_path: /login
+                failure_path: /login
+                default_target_path: /
+            
+            logout:
+                path: /logout
+                target: /
+                invalidate_session: true
+                
+            provider: chain_provider
+            
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+
+    access_control:
+        - { path: ^/blank, roles: ROLE_ADMIN }
+        - { path: ^/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout, roles: IS_AUTHENTICATED }
+        - { path: ^/product, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/products, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/checkout, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/faq, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/shiping_guide, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shiping_and_return, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/compare, roles: ROLE_USER }
+        - { path: ^/whishlist, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        

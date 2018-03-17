@@ -1,0 +1,124 @@
+{% extends "admin/admin.html.twig" %}
+	
+	{% block sections %}
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				{{ form_start(form, { 'attr':{'class':'clearfix'}}) }}
+					<div class="col-md-6">
+						<div class="billing-details">
+						<div class="section-title">
+							<h3 class="title">Product</h3>
+						</div>
+							<div class="form-group">
+							
+							{% if not form.vars.valid %}
+							{% for child in form.children %}
+								{% for error in child.vars.errors %}
+								<p>{{ error.message }}</p>
+								{% endfor %}
+							{% endfor %}
+							{% endif %} 
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.name) }}
+								{{ form_widget(form.name, { 'attr':{ 'class':'input', 'placeholder':'Product name' }}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.image.src) }}
+								{{ form_widget(form.image.src, { 'attr':{ 'class':'input', 'placeholder':'Image name' }}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.price) }}
+								{{ form_widget(form.price, { 'attr':{ 'class':'input', 'placeholder':'Product price'}}) }}
+							</div>
+							<div class="form-group">
+								{% if form.old_price.vars.errors|length > 0 %}
+								{% for error in form.old_price.vars.errors %}
+								<p>{{ error.message }}</p>
+								{% endfor %}
+								{% endif %}
+								{{ form_widget(form.old_price, { 'attr':{ 'class':'input', 'placeholder':'Product old price'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.image.src) }}
+								{{ form_widget(form.image.src, { 'attr':{ 'class':'input', 'placeholder':'Upload image file'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.notation) }}
+								{{ form_widget(form.notation, { 'attr':{ 'class':'input', 'placeholder':'Notation'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.new) }}
+								{{ form_widget(form.new, { 'attr':{ 'class':'input', 'placeholder':'New'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.sale) }}
+								{{ form_widget(form.sale, { 'attr':{ 'class':'input', 'placeholder':'Sale'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.description) }}
+								{{ form_widget(form.description, { 'attr':{ 'class':'input', 'placeholder':'Description'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.detail) }}
+								{{ form_widget(form.detail, { 'attr':{ 'class':'input', 'placeholder':'Detail'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.availability) }}
+								{{ form_widget(form.availability, { 'attr':{ 'class':'input', 'placeholder':'Availability'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.brand) }}
+								{{ form_widget(form.brand, { 'attr':{ 'class':'input', 'placeholder':'Brand'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.hour) }}
+								{{ form_widget(form.hour, { 'attr':{ 'class':'input', 'placeholder':'Hour'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.minute) }}
+								{{ form_widget(form.minute, { 'attr':{ 'class':'input', 'placeholder':'Minute'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.second) }}
+								{{ form_widget(form.second, { 'attr':{ 'class':'input', 'placeholder':'Second'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.category) }}
+								{{ form_widget(form.category, { 'attr':{ 'class':'input', 'placeholder':'Category'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_errors(form.sex) }}
+								{{ form_widget(form.sex, { 'attr':{ 'class':'input', 'placeholder':'sex'}}) }}
+							</div>
+							<div class="form-group">
+								<div class="input-checkbox">
+								{{ form_errors(form.isActive) }}
+								{{ form_widget(form.isActive, { 'attr':{ 'id':'is_active_checkbox'}}) }}
+									<label class="font-weak" for="is_active_checkbox"> is active ?</label>
+								</div>
+							</div>
+							<div class="form-group">
+							</div>
+						<button type="submit" class="primary-btn" formnovalidate>Save</button>
+
+						</div>
+					</div>
+
+					<div class="col-md-6">
+					{% if product %}
+                        {% include 'admin/product/product_preview.html.twig'%}
+                    {% endif %}
+					</div>
+				{{ form_end(form) }}
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+	{% endblock %}
