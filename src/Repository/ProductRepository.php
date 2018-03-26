@@ -35,6 +35,19 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     /**
+     * Load one product
+     */
+    public function loadAll()
+    {
+        $q = $this->createQueryBuilder('p')
+            ->join('p.image', 'i')
+            ->addSelect('i')
+            ->getQuery();
+        $res = $q->getArrayResult();
+        return $res;
+    }
+
+    /**
      * Load all products with -..% tag
      */
     public function loadDealsOfTheDay()
@@ -96,6 +109,23 @@ class ProductRepository extends ServiceEntityRepository
             ->andWhere('p.category  = :cat')
             ->setParameter(':isactive', true)
             ->setParameter(':cat', $cat)
+            ->getQuery()
+            ->getArrayResult();
+        return $products;
+    }
+
+    /**
+     * Load products by gender
+     */
+    public function loadProductsByGender($gender)
+    {
+        $products = $this->createQueryBuilder('p')
+            ->join('p.image', 'i')
+            ->addSelect('i')
+            ->where('p.isActive = :isactive')
+            ->andWhere('p.sex  = :gender')
+            ->setParameter(':isactive', true)
+            ->setParameter(':gender', $gender)
             ->getQuery()
             ->getArrayResult();
         return $products;

@@ -165,7 +165,7 @@ class Data
                 "text" => "Bags & shoes"
             ],
             "7" => [
-                "href" => "/products/all",
+                "href" => "/product/all",
                 "text" => "view all"
             ]
         ]
@@ -182,17 +182,13 @@ class Data
                 "text" => "Shop"
             ],
             "2" => [
-                "href" => "/product/all",
+                "href" => "/products/gender/men",
                 "text" => "Men's"
             ],
             "3" => [
-                "href" => "/product/all",
-                "text" => "Women's",
-                // TODO adapt url product >> product / {id }
-                "categories" => [
-                    "url" => "/product",
-                    "text" => "Clothing"
-                ]
+                "href" => "/products/gender/women",
+                "text" => "Women's"
+            
             ]
         ]
     ];
