@@ -25,9 +25,86 @@ class ItemCaddy
     private $product;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $qty;
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getQty()
+    {
+        return $this->qty;
+    }
+
+    /**
+     *
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     *
+     * @param mixed $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+
+    /**
+     *
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     *
+     * @param mixed $qty
+     */
+    public function setQty($qty)
+    {
+        $this->qty = $qty;
+    }
 
     /**
      *
@@ -50,10 +127,8 @@ class ItemCaddy
     public function total()
     {
         $total = 0;
-        if ($products != null && count($products) > 0) {
-            foreach ($products as $prod) {
-                $total += $prod->getPrice();
-            }
+        if ($product != null && $qty > 0) {
+            $total = $product->getPrice() * $qty;
         }
         return $total;
     }
