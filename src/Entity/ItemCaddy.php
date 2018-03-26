@@ -6,10 +6,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Table(name="back_2018_Caddy")
- * @ORM\Entity(repositoryClass="App\Repository\CaddyRepository")
+ * @ORM\Table(name="back_2018_ItemCaddy")
+ * @ORM\Entity(repositoryClass="App\Repository\ItemCaddyRepository")
  */
-class Caddy
+class ItemCaddy
 {
 
     /**
@@ -19,8 +19,15 @@ class Caddy
      */
     private $id;
 
-    // add your own fields
-    private $products;
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Product")
+     */
+    private $product;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $qty;
 
     /**
      *
