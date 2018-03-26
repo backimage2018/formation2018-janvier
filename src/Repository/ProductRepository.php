@@ -83,5 +83,40 @@ class ProductRepository extends ServiceEntityRepository
         shuffle($products);
         return array_slice($products, 0, 7, true);
     }
+
+    /**
+     * Load products by category
+     */
+    public function loadProductsByCategory($cat)
+    {
+        $products = $this->createQueryBuilder('p')
+            ->join('p.image', 'i')
+            ->addSelect('i')
+            ->where('p.isActive = :isactive')
+            ->andWhere('p.category  = :cat')
+            ->setParameter(':isactive', true)
+            ->setParameter(':cat', $cat)
+            ->getQuery()
+            ->getArrayResult();
+        return $products;
+    }
+
+    /**
+     * Load products by category and gender
+     */
+    public function loadProductsByCategoryAndGender($cat, $gender)
+    {
+        $products = $this->createQueryBuilder('p')
+            ->join('p.image', 'i')
+            ->addSelect('i')
+            ->where('p.isActive = :isactive AND p.category  = :cat AND (p.sex  = :sex OR p.sex= :orsex)')
+            ->setParameter(':isactive', true)
+            ->setParameter(':cat', $cat)
+            ->setParameter(':sex', $gender)
+            ->setParameter(':orsex', 'mixte')
+            ->getQuery()
+            ->getArrayResult();
+        return $products;
+    }
 }
 ?>

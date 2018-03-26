@@ -48,19 +48,20 @@ class ProductType extends AbstractType
             ->add('second', IntegerType::class)
             ->add('category', ChoiceType::class, array(
             'choices' => array(
-                'Women\'s clothing' => 'Women\'s clothing',
-                'Men\'s clothing' => 'Men\'s clothing',
-                'Bags & shoes' => 'Bags & shoes',
-                'Jewelry & watches' => 'Jewelry & watches',
-                'Phone\'s & accessories' => 'Phone\'s & accessories',
-                'Computer & office' => 'Computer & office',
-                'Consumer electronics' => 'Consumer electronics'
+                'Women\'s clothing' => 'clothing',
+                'Men\'s clothing' => 'clothing',
+                'Bags & shoes' => 'bags_and_shoes',
+                'Jewelry & watches' => 'jewelry_and_watches',
+                'Phone\'s & accessories' => 'phones_and_accessories',
+                'Computer & office' => 'computer_and_office',
+                'Consumer electronics' => 'consumer_electronics'
             )
         ))
             ->add('sex', ChoiceType::class, array(
             'choices' => array(
-                'Women' => 'Women',
-                'Men' => 'Men'
+                'Women' => 'women',
+                'Men' => 'men',
+                'Mixte' => 'mixte'
             )
         ))
             ->add('isActive', CheckboxType::class);

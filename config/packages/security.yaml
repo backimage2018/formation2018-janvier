@@ -71,4 +71,3 @@ security:
         - { path: ^/compare, roles: ROLE_USER }
         - { path: ^/whishlist, roles: ROLE_USER }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        

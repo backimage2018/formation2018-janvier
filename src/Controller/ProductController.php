@@ -244,5 +244,78 @@ class ProductController extends Controller
         $param["products"] = $products;
         return $this->render("product/products.html.twig", $param);
     }
+
+    /**
+     * @Route("products/category/{cat}", name="load_product_by_category")
+     */
+    function category(Request $request, $cat)
+    {
+        $param = [];
+        /* data for header */
+        $param = Data::loadHeader($param);
+        /* data for footer */
+        $param = Data::loadFooter($param);
+        /* data for profile content page */
+        /* custom data */
+        $param["breadcrumb"] = [
+            "title" => "breadcrumb",
+            "list" => [
+                "lvl0" => [
+                    "title" => "Home",
+                    "src" => $this->generateUrl("index")
+                ],
+                "lvl1" => [
+                    "title" => "Product",
+                    "src" => $this->generateUrl("products")
+                ],
+                "lvl2" => [
+                    "title" => "All",
+                    "src" => "#"
+                ]
+            ]
+        ];
+        var_dump($cat);
+        $products = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->loadProductsByCategory($cat);
+        $param["products"] = $products;
+        return $this->render("product/products.html.twig", $param);
+    }
+
+    /**
+     * @Route("products/category/{cat}/{gender}", name="load_product_by_category_gender")
+     */
+    function category_gender(Request $request, $cat, $gender)
+    {
+        $param = [];
+        /* data for header */
+        $param = Data::loadHeader($param);
+        /* data for footer */
+        $param = Data::loadFooter($param);
+        /* data for profile content page */
+        /* custom data */
+        $param["breadcrumb"] = [
+            "title" => "breadcrumb",
+            "list" => [
+                "lvl0" => [
+                    "title" => "Home",
+                    "src" => $this->generateUrl("index")
+                ],
+                "lvl1" => [
+                    "title" => "Product",
+                    "src" => $this->generateUrl("products")
+                ],
+                "lvl2" => [
+                    "title" => "All",
+                    "src" => "#"
+                ]
+            ]
+        ];
+        $products = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->loadProductsByCategoryAndGender($cat, $gender);
+        $param["products"] = $products;
+        return $this->render("product/products.html.twig", $param);
+    }
 }
 ?>

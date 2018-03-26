@@ -137,31 +137,31 @@ class Data
         "title" => "categories",
         "list" => [
             "0" => [
-                "href" => "/products/clothing/women",
+                "href" => "/products/category/clothing/women",
                 "text" => "women's clothing"
             ],
             "1" => [
-                "href" => "/products/clothing/men",
+                "href" => "/products/category/clothing/men",
                 "text" => "men's clothing"
             ],
             "2" => [
-                "href" => "/products/phones_and_accessories",
+                "href" => "/products/category/phones_and_accessories",
                 "text" => "Phone's & accessories"
             ],
             "3" => [
-                "href" => "/products/computer_and_office",
+                "href" => "/products/category/computer_and_office",
                 "text" => "Computer & office"
             ],
             "4" => [
-                "href" => "/products/consumer_electronics",
+                "href" => "/products/category/consumer_electronics",
                 "text" => "Consumer Electronics"
             ],
             "5" => [
-                "href" => "/products/jewelry_and_watches",
+                "href" => "/products/category/jewelry_and_watches",
                 "text" => "Jewelry & watches"
             ],
             "6" => [
-                "href" => "/products/bags_and_shoes",
+                "href" => "/products/category/bags_and_shoes",
                 "text" => "Bags & shoes"
             ],
             "7" => [
