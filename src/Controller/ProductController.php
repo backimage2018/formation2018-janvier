@@ -59,24 +59,26 @@ class ProductController extends Controller
         var_dump($this->generateUrl("admin_product_load", array(
             "id" => $id
         )));
-        $param["breadcrumb"] = [
-            "title" => "breadcrumb",
-            "list" => [
-                "lvl0" => [
-                    "title" => "Home",
-                    "src" => $this->generateUrl("index")
-                ],
-                "lvl1" => [
-                    "title" => "Product",
-                    "src" => $this->generateUrl("products")
-                ],
-                "lvl2" => [
-                    "title" => $product['name'],
-                    
-                    "src" => "#"
-                ]
-            ]
-        ];
+        /*
+         * $param["breadcrumb"] = [
+         * "title" => "breadcrumb",
+         * "list" => [
+         * "lvl0" => [
+         * "title" => "Home",
+         * "src" => $this->generateUrl("index")
+         * ],
+         * "lvl1" => [
+         * "title" => "Product",
+         * "src" => $this->generateUrl("products")
+         * ],
+         * "lvl2" => [
+         * "title" => $product['name'],
+         *
+         * "src" => "#"
+         * ]
+         * ]
+         * ];
+         */
         if ($authChecker->isGranted('ROLE_ADMIN')) {
             $param["breadcrumb"]['list']['lvl3'] = [
                 "title" => "Edit",
